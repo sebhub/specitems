@@ -1215,11 +1215,11 @@ class ItemCache(dict):
                 data_by_uid.update(
                     load_data_by_uid(path, self._cache_directory, uid_prefix,
                                      the_format))
-        self.add_items(data_by_uid, config.initialize_links, False)
         if type_provider is None:
             type_provider = ItemTypeProvider(data_by_uid,
                                              config.spec_type_root_uid)
         self.type_provider = type_provider
+        self.add_items(data_by_uid, config.initialize_links, False)
         for item in self.values():
             self.type_provider.set_type(item)
 
